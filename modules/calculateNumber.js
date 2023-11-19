@@ -1,4 +1,3 @@
-let mtext = "";
 function OneToNinteen(number) {
     const numberMap = {
       1: 'One',
@@ -47,6 +46,7 @@ function OneToNinteen(number) {
   }
 
   function HundredToThousand(number) {
+    // console.log(number);
     const hundredMap = {
         100: 'One Hundred',
         200: 'Two Hundred',
@@ -61,6 +61,7 @@ function OneToNinteen(number) {
     
       if (number >= 100 && number < 1000) {
         const hundred = Math.floor(number / 100) * 100;
+        
         const remainder = number % 100;
         return `${hundredMap[hundred]} ${TwentyToHundred(remainder)}`;
       } else {
@@ -77,12 +78,16 @@ function OneToNinteen(number) {
       }
   }
   function LacToCrore(number) {
-      if (number >= 100000 && number < 10000000) {
-        const Lac = Math.floor(number / 100000);
-        const remainder = number % 100000;
-        return `${TwentyToHundred(Lac)} Lac ${ThousandTolac(remainder)}`;
-      } else {
-        return HundredToThousand(number);
+      if (number<10000000) {
+        if (number >= 100000 && number < 10000000) {
+          const Lac = Math.floor(number / 100000);
+          const remainder = number % 100000;
+          return `${TwentyToHundred(Lac)} Lac ${ThousandTolac(remainder)}`;
+        } else {
+          return ThousandTolac(number);
+        }
+      }else{
+        return 'Number is too high to convert';
       }
   }
 
